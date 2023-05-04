@@ -1,0 +1,64 @@
+{
+    "plugins" : [
+    "plugins.backgrounds.custom_background_on_difficulty",
+    "plugins.timer.timer_text",
+    "plugins.word.word_discoverer_on_input",
+    "plugins.game_state.text_displayer_on_state",
+    "plugins.sounds.sounds",
+    "plugins.map.map",
+    "plugins.monsters.monsters_handler",
+    "plugins.decorations.animated_decoration",
+    "plugins.menu.play_button",
+    "plugins.menu.quit_button",
+    "plugins.menu.settings_button",
+    "plugins.mouses.mouse"
+        ],
+    "entities": [
+        {
+            "type": "custom_background"
+        },
+        {
+            "type": "timer_text",
+            "x": 0,
+            "y": 0,
+            "font": "Arial",
+            "size": 20
+
+        },
+        {
+            "type": "word_discoverer_on_input",
+            "x": 400,
+            "y": 300
+        },
+        {
+            "type": "display_text_on_game_state"
+        },
+        {
+            "type": "BackgroundMusic",
+            "volume": 0.5
+        },
+        {
+            "type": "map"
+        },
+        {
+            "type": "ground_monsters_handler",
+            "count": 10
+        },
+        {
+            "type": "play_button",
+            "margin": -100
+        },
+        {
+            "type": "quit_button",
+            "margin": 100
+        },
+        {
+            "type": "settings_button",
+            "margin": 0
+        },
+        {
+            "type": "mouse"
+        }
+
+    ]
+}
