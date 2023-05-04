@@ -3,7 +3,7 @@ import pygame as py
 
 from game import factory
 
-BACKGROUND_WORD_IMAGE : Final = py.image.load("assets\\empty_text_block.png")
+BACKGROUND_WORD_IMAGE : Final = py.image.load("assets/empty_text_block.png")
 
 
 class BackgroundWordImage:

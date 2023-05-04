@@ -14,7 +14,7 @@ class WordHandler:
     """Class used to load a random word and display it
     """
     def __init__(self, x : int, y : int) -> None:
-        self.word = load_random_word("texts\\liste_mots.txt")
+        self.word = load_random_word("texts/liste_mots.txt")
         self.displayer = WordDisplayer(self.word, x, y)
         JsonWordSetter.set(self.word)
         

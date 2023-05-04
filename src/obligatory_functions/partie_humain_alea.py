@@ -1,8 +1,8 @@
 from typing import Optional
 
-from importer_mots import importer_mots
-from choisir_mot_alea import choisir_mot_alea
-from partie_humain import partie_humain
+from obligatory_functions.importer_mots import importer_mots
+from obligatory_functions.choisir_mot_alea import choisir_mot_alea
+from obligatory_functions.partie_humain import partie_humain
 
 def partie_humain_alea(nom_fichier : str, nb_error_max : int, car_subst : Optional[str] = "-") -> bool:
     mots = importer_mots(nom_fichier)
@@ -12,7 +12,7 @@ def partie_humain_alea(nom_fichier : str, nb_error_max : int, car_subst : Option
 
 
 if __name__ == "__main__":
-    p = partie_humain_alea("texts\\test.txt", 8)
+    p = partie_humain_alea("mots2.txt", 8)
     if p:
         print("gagné")
     else:

@@ -5,9 +5,9 @@ from plugins.word.json_word import JsonWordGetter
 
 from game import factory
 
-NORMAL_BACKGROUND = "assets\\backgrounds\\background_grass.png"
-MEDIUM_BACKGROUND = "assets\\backgrounds\\background_cave.png"
-HARD_BACKGROUND = "assets\\backgrounds\\background_hell.png"
+NORMAL_BACKGROUND = "assets/backgrounds/background_grass.png"
+MEDIUM_BACKGROUND = "assets/backgrounds/background_cave.png"
+HARD_BACKGROUND = "assets/backgrounds/background_hell.png"
 
 MEDIUM_LETTERS = 10
 HARD_LETTERS = 15

@@ -1,9 +1,9 @@
 from typing import Optional
 
-from decouvrir_lettre import decouvrir_lettre
-from initialiser_mot_part_decouv import initialiser_mot_part_decouv
-from afficher_potence_texte import afficher_potence_texte
-from demander_proposition import demander_proposition
+from obligatory_functions.decouvrir_lettre import decouvrir_lettre
+from obligatory_functions.initialiser_mot_part_decouv import initialiser_mot_part_decouv
+from obligatory_functions.afficher_potence_texte import afficher_potence_texte
+from obligatory_functions.demander_proposition import demander_proposition
 
 
 """ 
@@ -42,7 +42,7 @@ def partie_humain(mot_myst : str, nb_error_max : int, car_subst : Optional[str] 
 
 
 if __name__ == "__main__":
-    p = partie_humain("BONJOUR", 8)
+    p = partie_humain("COMEDIE", 5)
     if p:
         print("Gagné")
     else:

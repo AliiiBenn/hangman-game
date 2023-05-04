@@ -28,7 +28,7 @@ def importer_mots(nom_fichier : str) -> list[str]:
     mots : list[str] = []
     
     for mot in liste_mots:
-        if not len(mot) < 3:
+        if len(mot) >= 3:
             mots.append(mot.strip().upper())
     
     return mots

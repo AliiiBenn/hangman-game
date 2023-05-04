@@ -5,7 +5,7 @@ from game import factory
 
 class CustomMouse:
     def __init__(self) -> None:
-        self.image = py.image.load("assets\\mouse.png")
+        self.image = py.image.load("assets/mouse.png")
         self.rect = self.image.get_rect()
         
         

@@ -21,7 +21,7 @@ class GroundMonsterRemoverOnError:
             return True
         return False
     
-    def pick_non_dead_monster(self) -> GroundMonster | None:
+    def pick_non_dead_monster(self) -> GroundMonster:
         for monster in self.monsters:
             if not monster.dead:
                 return monster

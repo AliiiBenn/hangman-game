@@ -1,5 +1,5 @@
 
-from importer_mots import importer_mots
+from .importer_mots import importer_mots
 
 
 def dico_frequence(nom_fichier : str) -> dict[str, int]:
@@ -11,7 +11,7 @@ def dico_frequence(nom_fichier : str) -> dict[str, int]:
     Returns:
         dict[str, int]:dictionnaire contenant la frequence de chaque lettres
     """
-    # import zords from file (use importer_mots function)
+    # import words from file (use importer_mots function)
     words = importer_mots(nom_fichier)
 
     #we converted the list of strings into a single strings

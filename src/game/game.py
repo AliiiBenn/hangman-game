@@ -42,10 +42,6 @@ class Game:
         self.screen_width, self.screen_height = py.display.get_surface().get_size()
         self.background = py.transform.scale(BACKGROUND_LINK, (self.screen_width, self.screen_height))
         self.screen.blit(self.background, (0, 0))
-            
-    def reset(self):
-        self.extentions = []
-        self.load_extentions()
 
     def run(self):
         run = True
@@ -67,9 +63,6 @@ class Game:
             for event in py.event.get():
                 if event.type == py.QUIT:
                     run = False
-                elif event.type == py.KEYDOWN:
-                    if event.key == py.K_r:
-                       self.reset()
         py.quit()
                     
 

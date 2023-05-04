@@ -25,7 +25,7 @@ def initialiser_mot_part_decouv(mot_myst : str, car_subst : Optional[str] = "-")
     Returns:
         list[str]:liste des lettres du mot a deviner avec toutes les lettres remplacer par car_subst sauf la premier et derniere
     """
-    splitAndSubstList : list[str] = []
+    splitAndSubstList = []
     for index, element in enumerate(mot_myst):
         if index == 0 or index == len(mot_myst) - 1:
             splitAndSubstList.append(element)

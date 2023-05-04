@@ -7,7 +7,7 @@ from plugins.game_state.game_state_handler import PlayingStateGetter
 class Button:
     def __init__(self, margin : int, file_name : str) -> None:
         self.margin = margin
-        self.image = py.image.load(f"assets\\{file_name}.png")
+        self.image = py.image.load(f"assets/{file_name}.png")
         self.rect = self.image.get_rect()
         
     

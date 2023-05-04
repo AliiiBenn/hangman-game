@@ -1,5 +1,5 @@
-from dico_frequence import *
-from lettre_la_plus_frequente import *
+from .dico_frequence import *
+from .lettre_la_plus_frequente import *
 
 
 """ 
@@ -21,3 +21,4 @@ def fabrique_liste_freq(nom_fichier):
       letter = lettre_la_plus_frequente(dico)
       liste.append(letter)
       del dico[letter]
+    return liste

@@ -83,9 +83,9 @@ class CustomMap:
         
         
 class Maps(Enum):
-    NORMAL = CustomMap(15, "assets\\map\\normal_dirt.png", "assets\\map\\normal_grass.png")
-    MEDIUM = CustomMap(15, "assets\\map\\medium_dirt.png", "assets\\map\\medium_grass.png")
-    HARD = CustomMap(15, "assets\\map\\hard_dirt.png", "assets\\map\\hard_grass.png")
+    NORMAL = CustomMap(15, "assets/map/normal_dirt.png", "assets/map/normal_grass.png")
+    MEDIUM = CustomMap(15, "assets/map/medium_dirt.png", "assets/map/medium_grass.png")
+    HARD = CustomMap(15, "assets/map/hard_dirt.png", "assets/map/hard_grass.png")
 
 
 class MapDifficulty(Enum):
