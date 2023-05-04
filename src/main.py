@@ -1,11 +1,6 @@
-import argparse
-from typing import Callable
 import pygame, time
 from pygame import mixer, font
 from game import Game
-from neural import neural_network
-from obligatory_functions import importer_mots, choisir_mot_alea, partie_humain_alea, partie_humain, call_partie_auto
-from neural import partie_auto_neural
 from pypattyrn.creational.factory import Factory
 from enum import Enum, auto
 from abc import ABC, abstractstaticmethod
@@ -15,41 +10,6 @@ class GameTypeStrategy(ABC):
     @abstractstaticmethod
     def play() -> None:
         pass
-
-
-class HumanGameStrategy(GameTypeStrategy):
-    @staticmethod
-    def play() -> None:
-        mot = input("Veuillez choisir le mot à trouver : ")
-        vies = int(input("Veuillez choisir le nobre de vies dans la partie : "))
-
-        partie_humain(mot.upper(), vies)
-
-
-class HumanRandomGameStrategy(GameTypeStrategy):
-    @staticmethod
-    def play() -> None:
-        vies = int(input("Veuillez choisir le nobre de vies dans la partie"))
-        partie_humain_alea("texts/liste_mots.txt", vies)
-
-
-class AutoGameStrategy(GameTypeStrategy):
-    @staticmethod
-    def play() -> None:
-        WORDS = []
-        with open('texts/liste_mots.txt', 'r') as f:
-            WORDS = [word.strip() for word in f.readlines()]
-        mot = choisir_mot_alea(WORDS)
-        call_partie_auto(mot) 
-
-class NeuralGameStrategy(GameTypeStrategy):
-    @staticmethod
-    def play() -> None:
-        WORDS = []
-        with open('texts/liste_mots.txt', 'r') as f:
-            WORDS = [word.strip() for word in f.readlines()]
-        mot = choisir_mot_alea(WORDS)
-        partie_auto_neural()
 
 class GraphicGameStrategy(GameTypeStrategy):
     @staticmethod
@@ -79,16 +39,8 @@ class IncorrectGameType(Exception):
 class GameModeFactory(Factory):
     @staticmethod
     def create(game_mode_type : GameType) -> GameTypeStrategy:
-        if game_mode_type == GameType.HUMAN:
-            return HumanGameStrategy()
-        elif game_mode_type == GameType.HUMAN_RANDOM:
-            return HumanRandomGameStrategy()
-        elif game_mode_type == GameType.AUTO:
-            return AutoGameStrategy()
-        elif game_mode_type == GameType.GRAPHIC:
+        if game_mode_type == GameType.GRAPHIC:
             return GraphicGameStrategy()
-        elif game_mode_type == GameType.NEURAL:
-            return NeuralGameStrategy()
         else:
             raise IncorrectGameType(game_mode_type)
 

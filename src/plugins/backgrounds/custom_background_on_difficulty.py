@@ -5,6 +5,8 @@ from plugins.word.json_word import JsonWordGetter
 
 from game import factory
 
+
+
 NORMAL_BACKGROUND = "assets/backgrounds/background_grass.png"
 MEDIUM_BACKGROUND = "assets/backgrounds/background_cave.png"
 HARD_BACKGROUND = "assets/backgrounds/background_hell.png"
@@ -13,29 +15,57 @@ MEDIUM_LETTERS = 10
 HARD_LETTERS = 15
 
 
-class CustomBackGroundOnDifficulty:
-    def __init__(self) -> None:
-        self.word = ""
-        self.word_size = 0
-        
-        self.background = CustomBackground(NORMAL_BACKGROUND)
-        
-    
-    def update(self, screen : py.Surface) -> None:
-        if self.word == "" and self.word_size == 0:
-            self.word = JsonWordGetter.get()
-            self.word_size = len(self.word)
-            self.background = self.get_background()
-        self.background.update(screen)
-        
+from abc import ABC, abstractmethod
+
+class BackgroundStrategy(ABC):
+    @abstractmethod
     def get_background(self) -> CustomBackground:
-        if self.word_size < MEDIUM_LETTERS:
-            return CustomBackground(NORMAL_BACKGROUND)
-        elif self.word_size < HARD_LETTERS:
-            return CustomBackground(MEDIUM_BACKGROUND)
+        pass
+    
+    
+class NormalBackgroundStrategy(BackgroundStrategy):
+    def get_background(self) -> CustomBackground:
+        return CustomBackground(NORMAL_BACKGROUND)
+    
+    
+class MediumBackgroundStrategy(BackgroundStrategy):
+    def get_background(self) -> CustomBackground:
+        return CustomBackground(MEDIUM_BACKGROUND)
+    
+    
+class HardBackgroundStrategy(BackgroundStrategy):
+    def get_background(self) -> CustomBackground:
+        return CustomBackground(HARD_BACKGROUND)
+
+
+class BackgroundStrategyFactory:
+    @staticmethod
+    def create(word_size : int) -> BackgroundStrategy:
+        if word_size < MEDIUM_LETTERS:
+            return NormalBackgroundStrategy()
+        elif word_size < HARD_LETTERS:
+            return MediumBackgroundStrategy()
         else:
-            return CustomBackground(HARD_BACKGROUND)
+            return HardBackgroundStrategy()
+    
+    
+class BackgroundSetterOnDifficulty:
+    def __init__(self) -> None:
+        self.word_size = 0
+        self.background = None
+        
+        
+    def update(self, screen : py.Surface) -> None:
+        if self.word_size == 0:
+            self.word_size = len(JsonWordGetter.get())
+        if self.background is None:
+            self.background = self.set_background()
+        return self.background.update(screen)
+        
+    def set_background(self) -> CustomBackground:
+        return BackgroundStrategyFactory.create(self.word_size).get_background()
+    
         
 
 def register() -> None:
-    return factory.register("custom_background", CustomBackGroundOnDifficulty)
+    return factory.register("custom_background", BackgroundSetterOnDifficulty)
