@@ -3,7 +3,7 @@ import random
 
 
 from plugins.entity_animator.animation_data import EntityAnimationData
-from plugins.entity_animator.animator import AnimatedEntityAnimator
+from plugins.entity_animator.animator import LoopAnimationStrategy, UniqueAnimationStrategy
 
 
 from plugins.monsters.monsters_directions import Direction
